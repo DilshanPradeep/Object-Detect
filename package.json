@@ -1,0 +1,13 @@
+{
+  "name": "object-detection-yolo11n",
+  "version": "1.0.0",
+  "description": "Real-time browser-based object detection using YOLO11n ONNX",
+  "private": true,
+  "scripts": {
+    "dev": "npx -y http-server -p 8080 --cors -a 0.0.0.0 -c-1",
+    "dev:https": "npx -y http-server -S -C cert.pem -K key.pem -p 8443 --cors -a 0.0.0.0 -c-1",
+    "vercel-build": "echo 'Static site — no build step required'"
+  },
+  "keywords": ["yolo", "object-detection", "onnx", "browser", "ai"],
+  "license": "MIT"
+}

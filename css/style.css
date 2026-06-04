@@ -1,0 +1,299 @@
+/* ============================================================
+   Object Detection — Clean Minimal Professional Theme
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg: #ffffff;
+  --bg-alt: #f7f8fa;
+  --text: #1a1a2e;
+  --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
+  --border: #e5e7eb;
+  --accent: #3b82f6;
+  --accent-hover: #2563eb;
+  --radius: 12px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-lg: 0 10px 40px rgba(0,0,0,0.08);
+  --transition: 200ms ease;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- Header ---------- */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-brand svg {
+  width: 24px;
+  height: 24px;
+  color: var(--accent);
+}
+
+.header-brand h1 {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.header-back {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.header-back:hover {
+  background: var(--bg-alt);
+  color: var(--text);
+}
+
+.header-back svg {
+  width: 16px;
+  height: 16px;
+}
+
+.header-back.visible {
+  display: flex;
+}
+
+/* ---------- Landing (Choose Mode) ---------- */
+
+.landing {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px;
+}
+
+.landing-inner {
+  text-align: center;
+  max-width: 480px;
+}
+
+.landing-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  letter-spacing: -0.02em;
+}
+
+.landing-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+.landing-options {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.option-card {
+  flex: 1;
+  max-width: 200px;
+  padding: 32px 24px;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all var(--transition);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.option-card:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+.option-card svg {
+  width: 36px;
+  height: 36px;
+  color: var(--text-muted);
+  transition: color var(--transition);
+}
+
+.option-card:hover svg {
+  color: var(--accent);
+}
+
+.option-card span {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* ---------- Detection View ---------- */
+
+.detection-view {
+  flex: 1;
+  display: none;
+  flex-direction: column;
+  padding: 16px;
+}
+
+.detection-view.active {
+  display: flex;
+}
+
+.canvas-wrapper {
+  flex: 1;
+  position: relative;
+  background: var(--bg-alt);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+}
+
+.canvas-wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.canvas-wrapper canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.canvas-wrapper img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* ---------- Loading State ---------- */
+
+.loader-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  transition: opacity 300ms ease;
+}
+
+.loader-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loader-text {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+/* ---------- Hidden Utilities ---------- */
+
+.hidden {
+  display: none !important;
+}
+
+.file-input {
+  display: none;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 500px) {
+  .landing-options {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .option-card {
+    max-width: 100%;
+    width: 100%;
+    flex-direction: row;
+    padding: 20px 24px;
+  }
+
+  .option-card svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .landing-title {
+    font-size: 1.25rem;
+  }
+
+  .detection-view {
+    padding: 8px;
+  }
+}
