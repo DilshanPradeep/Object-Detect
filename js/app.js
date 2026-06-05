@@ -61,6 +61,15 @@ class App {
     this.landing.classList.remove('hidden');
     this.btnBack.classList.remove('visible');
 
+    try {
+      if (document.fullscreenElement || document.webkitFullscreenElement) {
+        if (document.exitFullscreen) document.exitFullscreen();
+        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+      }
+    } catch (e) {
+      console.warn("Exit fullscreen failed", e);
+    }
+
     // Clear canvases and video
     const ctx = this.overlay.getContext('2d');
     ctx.clearRect(0, 0, this.overlay.width, this.overlay.height);
@@ -78,6 +87,14 @@ class App {
     try {
       this.showDetectionView();
       this.video.style.display = 'block';
+
+      try {
+        const el = document.documentElement;
+        if (el.requestFullscreen) await el.requestFullscreen();
+        else if (el.webkitRequestFullscreen) await el.webkitRequestFullscreen();
+      } catch (e) {
+        console.warn("Fullscreen request failed", e);
+      }
 
       this.stream = await navigator.mediaDevices.getUserMedia({
         video: { facingMode: 'environment', width: { ideal: 640 }, height: { ideal: 480 } },
