@@ -17,45 +17,43 @@
     <p class="loader-text" id="loader-text">Loading model...</p>
   </div>
 
-  <!-- Header -->
-  <header class="header">
-    <div class="header-brand">
-      <img src="./Logo.png" alt="Synthrium Logo" class="brand-logo">
-      <h1>Synthrium Object Detection</h1>
-    </div>
-    <button class="header-back" id="btn-back">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="19" y1="12" x2="5" y2="12"/>
-        <polyline points="12 19 5 12 12 5"/>
-      </svg>
-      Back
-    </button>
-  </header>
+  <!-- Floating Back Button for Detection View -->
+  <button class="header-back" id="btn-back">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="19" y1="12" x2="5" y2="12"/>
+      <polyline points="12 19 5 12 12 5"/>
+    </svg>
+    Back
+  </button>
 
   <!-- Landing: Choose Mode -->
   <main class="landing" id="landing">
     <div class="landing-inner">
-      <h2 class="landing-title">Detect Objects</h2>
-      <p class="landing-subtitle">Open your camera for real-time detection or upload an image to identify objects.</p>
+      <img src="./Logo.png" alt="Synthrium Logo" class="landing-logo">
+      <h1 class="landing-title">Synthrium</h1>
+      <p class="landing-subtitle">Fruits and Vegitable Detection</p>
+      
       <div class="landing-options">
         <!-- Open Camera -->
-        <div class="option-card" id="opt-camera">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <button class="btn btn-primary" id="opt-camera">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/>
             <circle cx="12" cy="13" r="4"/>
           </svg>
           <span>Open Camera</span>
-        </div>
+        </button>
         <!-- Upload Image -->
-        <div class="option-card" id="opt-upload">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
-            <polyline points="17 8 12 3 7 8"/>
-            <line x1="12" y1="3" x2="12" y2="15"/>
+        <button class="btn btn-secondary" id="opt-upload">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <polyline points="21 15 16 10 5 21"/>
           </svg>
-          <span>Upload Image</span>
-        </div>
+          <span>Upload Photo</span>
+        </button>
       </div>
+      
+      <a href="#" class="view-supported">View Supported Items</a>
     </div>
   </main>
 
